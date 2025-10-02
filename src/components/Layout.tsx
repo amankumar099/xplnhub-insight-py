@@ -108,35 +108,83 @@ const Layout: React.FC<LayoutProps> = ({ children, onOpenOnboarding }) => {
               </button>
             </div>
 
-            {/* Mobile Navigation */}
-            {mobileMenuOpen && (
-              <div className="md:hidden mt-4 pb-4 border-t border-cyan-500/20 pt-4">
-                <nav className="flex flex-col space-y-4">
-                  {navLinks.map((link) => (
-                    <Link
-                      key={link.path}
-                      to={link.path}
-                      className={`transition-colors ${
-                        isActive(link.path)
-                          ? 'text-cyan-400 font-semibold'
-                          : 'text-gray-300 hover:text-cyan-400'
-                      }`}
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
+            {/* Mobile Navigation Overlay */}
+            <div 
+              className={`fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden transition-opacity duration-300 ${
+                mobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+              }`}
+              onClick={() => setMobileMenuOpen(false)}
+            />
+            
+            {/* Mobile Navigation Panel */}
+            <div 
+              className={`fixed top-0 right-0 h-screen w-80 max-w-[85vw] bg-gray-900/80 backdrop-blur-xl border-l border-cyan-500/20 z-50 md:hidden transform transition-transform duration-300 ease-in-out ${
+                mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+              }`}
+            >
+              <div className="flex flex-col h-full">
+                {/* Mobile Menu Header */}
+                <div className="flex items-center justify-between p-6 border-b border-cyan-500/20">
+                  <div className="flex items-center space-x-2">
+                    <Terminal className="w-6 h-6 text-cyan-400" />
+                    <span className="text-xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+                      Menu
+                    </span>
+                  </div>
+                  <button
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="text-gray-400 hover:text-cyan-400 transition-colors p-2 hover:bg-cyan-500/10 rounded-lg"
+                  >
+                    <X className="w-6 h-6" />
+                  </button>
+                </div>
+
+                {/* Mobile Menu Content */}
+                <nav className="flex-1 overflow-y-auto p-6">
+                  <div className="space-y-2">
+                    {navLinks.map((link, index) => (
+                      <Link
+                        key={link.path}
+                        to={link.path}
+                        className={`block px-4 py-3 rounded-lg transition-all duration-200 transform hover:translate-x-1 ${
+                          isActive(link.path)
+                            ? 'bg-cyan-500/10 text-cyan-400 font-semibold border-l-4 border-cyan-400'
+                            : 'text-gray-300 hover:bg-cyan-500/5 hover:text-cyan-400'
+                        }`}
+                        style={{
+                          animationDelay: `${index * 50}ms`,
+                          animation: mobileMenuOpen ? 'slideInRight 0.3s ease-out forwards' : 'none'
+                        }}
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
+
+                  {/* Divider */}
+                  <div className="my-6 h-px bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent"></div>
+
+                  {/* GitHub Link */}
                   <a 
                     href="https://github.com/XplnHUB/Insight-Py" 
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-300 hover:text-cyan-400 transition-colors flex items-center space-x-2"
+                    className="flex items-center space-x-3 px-4 py-3 text-gray-300 hover:text-cyan-400 hover:bg-cyan-500/5 rounded-lg transition-all duration-200 transform hover:translate-x-1"
                   >
                     <Github className="w-5 h-5" />
-                    <span>GitHub</span>
+                    <span>View on GitHub</span>
+                    <ExternalLink className="w-4 h-4 ml-auto" />
                   </a>
                 </nav>
+
+                {/* Mobile Menu Footer */}
+                <div className="p-6 border-t border-cyan-500/20">
+                  <p className="text-xs text-gray-500 text-center">
+                    &copy; 2025 XplnHUB
+                  </p>
+                </div>
               </div>
-            )}
+            </div>
           </div>
         </header>
 
