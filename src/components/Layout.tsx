@@ -57,11 +57,10 @@ const Layout: React.FC<LayoutProps> = ({ children, onOpenOnboarding }) => {
       </div>
 
       <div className="relative z-10">
-        {/* Header */}
         <header className="fixed top-0 w-full bg-gray-900/80 backdrop-blur-md border-b border-cyan-500/20 z-50">
           <div className="container mx-auto px-6 py-4">
             <div className="flex items-center justify-between">
-              {/* Logo */}
+
               <Link to="/" className="flex items-center space-x-2">
                 <Terminal className="w-8 h-8 text-cyan-400" />
                 <span className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
@@ -69,7 +68,6 @@ const Layout: React.FC<LayoutProps> = ({ children, onOpenOnboarding }) => {
                 </span>
               </Link>
 
-              {/* Desktop Navigation */}
               <nav className="hidden md:flex space-x-8">
                 {navLinks.map((link) => (
                   <Link
@@ -86,7 +84,6 @@ const Layout: React.FC<LayoutProps> = ({ children, onOpenOnboarding }) => {
                 ))}
               </nav>
 
-              {/* Desktop CTA */}
               <div className="hidden md:flex items-center space-x-4">
                 <a 
                   href="https://github.com/XplnHUB/Insight-Py" 
@@ -99,7 +96,6 @@ const Layout: React.FC<LayoutProps> = ({ children, onOpenOnboarding }) => {
                 </a>
               </div>
 
-              {/* Mobile Menu Button */}
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className="md:hidden text-gray-300 hover:text-cyan-400 transition-colors"
@@ -108,7 +104,6 @@ const Layout: React.FC<LayoutProps> = ({ children, onOpenOnboarding }) => {
               </button>
             </div>
 
-            {/* Mobile Navigation Overlay */}
             <div 
               className={`fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden transition-opacity duration-300 ${
                 mobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
@@ -116,14 +111,12 @@ const Layout: React.FC<LayoutProps> = ({ children, onOpenOnboarding }) => {
               onClick={() => setMobileMenuOpen(false)}
             />
             
-            {/* Mobile Navigation Panel */}
             <div 
               className={`fixed top-0 right-0 h-screen w-80 max-w-[85vw] bg-gray-900/80 backdrop-blur-xl border-l border-cyan-500/20 z-50 md:hidden transform transition-transform duration-300 ease-in-out ${
                 mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
               }`}
             >
               <div className="flex flex-col h-full">
-                {/* Mobile Menu Header */}
                 <div className="flex items-center justify-between p-6 border-b border-cyan-500/20">
                   <div className="flex items-center space-x-2">
                     <Terminal className="w-6 h-6 text-cyan-400" />
@@ -139,7 +132,6 @@ const Layout: React.FC<LayoutProps> = ({ children, onOpenOnboarding }) => {
                   </button>
                 </div>
 
-                {/* Mobile Menu Content */}
                 <nav className="flex-1 overflow-y-auto p-6">
                   <div className="space-y-2">
                     {navLinks.map((link, index) => (
