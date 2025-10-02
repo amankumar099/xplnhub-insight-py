@@ -630,6 +630,18 @@ html {
   }
 }
 
+/* Mobile Menu Animations */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 /* Text Selection */
 ::selection {
   background-color: rgba(0, 245, 255, 0.3);
