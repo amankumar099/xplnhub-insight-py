@@ -257,11 +257,19 @@ html {
   }
   
   .feature-card {
-    @apply p-6;
+    @apply p-4 sm:p-6;
   }
   
   .terminal-content {
-    @apply p-4 text-xs;
+    @apply p-3 sm:p-4 text-xs sm:text-sm;
+  }
+  
+  .terminal-line {
+    @apply flex-wrap sm:flex-nowrap items-start sm:items-center;
+  }
+  
+  .copy-button {
+    @apply mt-2 sm:mt-0;
   }
 }
 
