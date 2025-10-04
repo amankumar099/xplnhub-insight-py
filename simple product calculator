@@ -1,0 +1,28 @@
+// Program: Simple Product Calculator
+
+/**
+ * Calculates the product (multiplication) of two numbers.
+ * @param a The first number.
+ * @param b The second number.
+ * @returns The product of a and b.
+ */
+function calculateProduct(a: number, b: number): number {
+    // We explicitly define that 'a' and 'b' must be numbers,
+    // and the function must return a number.
+    return a * b;
+}
+
+// Define the two numbers
+const num1: number = 15;
+const num2: number = 7;
+
+// Call the function and store the result
+const result: number = calculateProduct(num1, num2);
+
+// Output the result to the console
+console.log(`The first number is: ${num1}`);
+console.log(`The second number is: ${num2}`);
+console.log(`The product of ${num1} and ${num2} is: ${result}`);
+
+// Example with different numbers
+console.log(`\nProduct of 5.5 and 2 is: ${calculateProduct(5.5, 2)}`);
